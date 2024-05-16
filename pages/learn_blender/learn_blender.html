@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grace K Art</title>
+    <link rel="icon" type="image/x-icon" href="../../images/logo.ico">
+    <link rel="stylesheet" href="../../main.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the separate CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Grace K Art</h1>
+        <nav>
+            <ul>
+                <li><a href="../index/index.html">Home</a></li>
+                <li><a href ="../artgallery/artgallery.html">Art Gallery</a></li>
+                <li><a href ="../learn_blender/learn_blender.html">Learn Blender</a></li>
+                <li><a href ="../about/about.html">About</a></li>
+                <li><a href ="../contact/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1 class ="indexText">Welcome to the "Learn Blender" page!</h1>
+    <p class="indexText">This page will be updated with my own tutorials and guides! For now, I have added a few tutorials that were especially helpful to me when I first started using Blender for art.</p>
+    
+    <div class="player-container">
+        <div class="player" id="player1"></div>
+        <h3>Blender Donut Tutorials</h3>
+        <div class="caption">
+            <p>Many people are familiar with Blender Guru's beginner tutorials. They are what began my interest in Blender and taught me basic skills.<br>
+            This is the first video in a series of 14, but you learn enough to begin making your own art after the first few episodes</p>
+        </div>
+    </div>
+    
+    <div class="player-container">
+        <div class="player" id="player2"></div>
+        <h3>Human Modelling Tutorial</h3>
+        <div class="caption">
+            <p>This is one of the first modelling tutorials I followed. Blender has a million different hotkeys and shortcuts and techniques for modelling, so there's a lot to learn. <br>
+            This tutorial does a great job of teaching you an efficient modelling workflow even if you know little to nothing about Blender.</p>
+        </div>
+    </div>
+    
+    <div class="player-container">
+        <div class="player" id="player3"></div>
+        <h3>Basic 3D Animation Tutorial</h3>
+        <div class="caption">
+            <p>This is a super short and easy to follow tutorial for the basics of animating things in blender. Animation is super interesting with lots of potential, <br>
+            and I definitely want to get better with animating.</p>
+        </div>
+    </div>
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var player1;
+        var player2;
+
+        function onYouTubeIframeAPIReady() {
+            player1 = new YT.Player('player1', {
+                height: '390', width: '640', videoId: 'B0J27sf9N1Y',
+                playerVars: {'playsinline': 1 },
+            });
+            player2 = new YT.Player('player2', {
+                height: '390', width: '640', videoId: '9xAumJRKV6A',
+                playerVars: {'playsinline': 1}
+            });
+            player3 = new YT.Player('player3', {
+                height: '390', width: '640', videoId: '_VAad-Xar_8',
+                playerVars: {'playsinline': 1}
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        var done = false;
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+                setTimeout(stopVideo, 6000);
+                done = true;
+            }
+        }
+
+        function stopVideo() {
+            player.stopVideo();
+        }
+    </script>
+  <footer>
+    <p><small>&copy;2024 Grace K Art. All rights reserved.</small></p>    
+  </footer>
+</body>
+</html>
